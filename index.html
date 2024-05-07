@@ -1,0 +1,179 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Carbon Footprint Estimator</h1>
+
+    <form action="/predict" method="post">
+        <h2>What is your body type?</h2>
+        <input type="radio" id="body_underweight" name="Body Type" value="underweight">
+        <label for="body_underweight">Underweight</label><br>
+        <input type="radio" id="body_normal" name="Body Type" value="normal">
+        <label for="body_normal">Normal</label><br>
+        <input type="radio" id="body_overweight" name="Body Type" value="overweight">
+        <label for="body_overweight">Overweight</label><br>
+        <input type="radio" id="body_obese" name="Body Type" value="obese">
+        <label for="body_obese">Obese</label><br><br>
+
+        <h2>What is your sex?</h2>
+        <input type="radio" id="sex_male" name="Sex" value="male">
+        <label for="sex_male">Male</label><br>
+        <input type="radio" id="sex_female" name="Sex" value="female">
+        <label for="sex_female">Female</label><br><br>
+
+        <h2>What is your diet?</h2>
+        <input type="radio" id="diet_vegan" name="Diet" value="vegan">
+        <label for="diet_vegan">Vegan</label><br>
+        <input type="radio" id="diet_vegetarian" name="Diet" value="vegetarian">
+        <label for="diet_vegetarian">Vegetarian</label><br>
+        <input type="radio" id="diet_pescatarian" name="Diet" value="pescatarian">
+        <label for="diet_pescatarian">Pescatarian</label><br>
+        <input type="radio" id="diet_omnivore" name="Diet" value="omnivore">
+        <label for="diet_omnivore">Omnivore</label><br><br>
+
+        <h2>How often do you shower?</h2>
+        <input type="radio" id="shower_less" name="How Often Shower" value="less_frequently">
+        <label for="shower_less">Less frequently</label><br>
+        <input type="radio" id="shower_daily" name="How Often Shower" value="daily">
+        <label for="shower_daily">Daily</label><br>
+        <input type="radio" id="shower_twice" name="How Often Shower" value="twice_a_day">
+        <label for="shower_twice">Twice a day</label><br>
+        <input type="radio" id="shower_more" name="How Often Shower" value="more_frequently">
+        <label for="shower_more">More frequently</label><br><br>
+
+        <h2>What do you use for energy?</h2>
+        <!-- Energy source options -->
+        <input type="radio" id="energy_coal" name="Heating Energy Source" value="coal">
+        <label for="energy_coal">Coal</label><br>
+        <input type="radio" id="energy_natural_gas" name="Heating Energy Source" value="natural_gas">
+        <label for="energy_natural_gas">Natural Gas</label><br>
+        <input type="radio" id="energy_wood" name="Heating Energy Source" value="wood">
+        <label for="energy_wood">Wood</label><br>
+        <input type="radio" id="energy_electricity" name="Heating Energy Source" value="electricity">
+        <label for="energy_electricity">Electricity</label><br><br>
+
+        <h2>What do you use for transportation?</h2>
+        <!-- Transportation options -->
+        <input type="radio" id="transport_public" name="Transport" value="public">
+        <label for="transport_public">Public transport(Metro, Bus, etc)</label><br>
+        <input type="radio" id="transport_walk_bike" name="Transport" value="walk/bike">
+        <label for="transport_walk_bike">Walk/Bike</label><br>
+        <input type="radio" id="transport_private" name="Transport" value="private">
+        <label for="transport_private">Private transport (Car)</label><br><br>
+
+        <h2>If you use a vehicle, what is your fuel type?</h2>
+        <!-- Vehicle fuel type options -->
+        <input type="radio" id="fuel_petrol" name="Vehicle Type" value="petrol">
+        <label for="fuel_petrol">Petrol</label><br>
+        <input type="radio" id="fuel_diesel" name="Vehicle Type" value="diesel">
+        <label for="fuel_diesel">Diesel</label><br>
+        <input type="radio" id="fuel_hybrid" name="Vehicle Type" value="hybrid">
+        <label for="fuel_hybrid">Hybrid</label><br>
+        <input type="radio" id="fuel_electric" name="Vehicle Type" value="electric">
+        <label for="fuel_electric">Electric</label><br>
+        <input type="radio" id="fuel_lpg" name="Vehicle Type" value="lpg">
+        <label for="fuel_lpg">LPG</label><br>
+        <input type="radio" id="fuel_na" name="Vehicle Type" value="na">
+        <label for="fuel_na">N/A</label><br><br>
+
+        <h2>How often do you use social media?</h2>
+        <!-- Social media usage options -->
+        <input type="radio" id="social_media_never" name="Social Activity" value="never">
+        <label for="social_media_never">Never</label><br>
+        <input type="radio" id="social_media_sometimes" name="Social Activity" value="sometimes">
+        <label for="social_media_sometimes">Sometimes</label><br>
+        <input type="radio" id="social_media_often" name="Social Activity" value="often">
+        <label for="social_media_often">Often</label><br><br>
+
+        <h2>What is your monthly grocery bill?</h2>
+        <!-- Grocery bill input field -->
+        <input type="number" id="grocery_bill" name="Monthly Grocery Bill"><br><br>
+
+        <h2>How often do you travel by air?</h2>
+        <!-- Air travel frequency options -->
+        <input type="radio" id="travel_never" name="Frequency of Traveling by Air" value="never">
+        <label for="travel_never">Never</label><br>
+        <input type="radio" id="travel_rarely" name="Frequency of Traveling by Air" value="rarely">
+        <label for="travel_rarely">Rarely</label><br>
+        <input type="radio" id="travel_frequently" name="Frequency of Traveling by Air" value="frequently">
+        <label for="travel_frequently">Frequently</label><br>
+        <input type="radio" id="travel_very_frequently" name="Frequency of Traveling by Air" value="very_frequently">
+        <label for="travel_very_frequently">Very frequently</label><br><br>
+
+        <h2>How far do you travel in your vehicle monthly (in Kilometers)?</h2>
+        <!-- Monthly vehicle travel input field -->
+        <input type="number" id="vehicle_travel_distance" name="Vehicle Monthly Distance Km"><br><br>
+
+        <h2>What is the size of your trash bag?</h2>
+        <!-- Trash bag size options -->
+        <input type="radio" id="trash_small" name="Waste Bag Size" value="small">
+        <label for="trash_small">Small</label><br>
+        <input type="radio" id="trash_medium" name="Waste Bag Size" value="medium">
+        <label for="trash_medium">Medium</label><br>
+        <input type="radio" id="trash_large" name="Waste Bag Size" value="large">
+        <label for="trash_large">Large</label><br>
+        <input type="radio" id="trash_extra_large" name="Waste Bag Size" value="extra_large">
+        <label for="trash_extra_large">Extra Large</label><br><br>
+
+        <h2>How many trash bags do you use weekly?</h2>
+        <!-- Weekly trash bag usage input field -->
+        <input type="number" id="trash_bag_count" name="Waste Bag Weekly Count"><br><br>
+
+        <h2>How many hours do you use the TV/Computer daily?</h2>
+        <!-- Daily TV/Computer usage input field -->
+        <input type="number" id="tv_computer_usage" name="How Long TV PC Daily Hour"><br><br>
+
+        <h2>How many new clothes do you buy a month?</h2>
+        <!-- Monthly clothes purchases input field -->
+        <input type="number" id="clothes_purchases" name="How Many New Clothes Monthly"><br><br>
+
+        <h2>How many hours do you use the internet daily?</h2>
+        <!-- Daily internet usage input field -->
+        <input type="number" id="internet_usage" name="How Long Internet Daily Hour"><br><br>
+
+        <h2>Are you energy efficient?</h2>
+        <!-- Energy efficiency options -->
+        <input type="radio" id="energy_efficient_yes" name="Energy efficiency" value="Yes">
+        <label for="energy_efficient_yes">Yes</label><br>
+        <input type="radio" id="energy_efficient_no" name="Energy efficiency" value="No">
+        <label for="energy_efficient_no">No</label><br>
+        <input type="radio" id="energy_efficient_sometimes" name="Energy efficiency" value="Sometimes">
+        <label for="energy_efficient_sometimes">Sometimes</label><br><br>
+
+        <h2>How many of the following items do you recycle? (Glass, Plastic, Metal, Paper)</h2>
+        <input type="radio" id="recycle_count_0" name="Recycling" value="0">
+        <label for="recycle_count_1">0</label><br>
+        <input type="radio" id="recycle_count_1" name="Recycling" value="1">
+        <label for="recycle_count_1">1</label><br>
+        <input type="radio" id="recycle_count_2" name="Recycling" value="2">
+        <label for="recycle_count_2">2</label><br>
+        <input type="radio" id="recycle_count_3" name="Recycling" value="3">
+        <label for="recycle_count_3">3</label><br>
+        <input type="radio" id="recycle_count_4" name="Recycling" value="4">
+        <label for="recycle_count_4">4</label><br>
+
+        <h2>How many of the following do you cook with? (Stove, Oven, Microwave, Airfryer, Grill)</h2>
+        <!-- Cooking methods options -->
+        <input type="radio" id="cooking_stove" name="Cooking_With" value="1">
+        <label for="cooking_stove">1</label><br>
+        <input type="radio" id="cooking_oven" name="Cooking_With" value="2">
+        <label for="cooking_oven">2</label><br>
+        <input type="radio" id="cooking_microwave" name="Cooking_With" value="3">
+        <label for="cooking_microwave">3</label><br>
+        <input type="radio" id="cooking_airfryer" name="Cooking_With" value="4">
+        <label for="cooking_airfryer">4</label><br>
+        <input type="radio" id="cooking_grill" name="Cooking_With" value="5">
+        <label for="cooking_grill">5</label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
