@@ -112,11 +112,12 @@ def convertCooking(x):
         ans.append(d[item])
     return len(ans)
 
-TEMPLATE = "/Users/adityakalkar/HTML/320 final project/templates"
-STATIC = "/Users/adityakalkar/HTML/320 final project/static"
+# TEMPLATE = "/Users/adityakalkar/HTML/320 final project/templates"
+# STATIC = "/Users/adityakalkar/HTML/320 final project/static"
 
-app = Flask(__name__,template_folder=TEMPLATE,
-            static_folder=STATIC)
+# app = Flask(__name__,template_folder=TEMPLATE,
+#             static_folder=STATIC)
+app = Flask(__name__)
 
 
 @app.route('/')
